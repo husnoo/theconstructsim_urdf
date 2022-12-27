@@ -31,6 +31,10 @@ install(
     share/${PROJECT_NAME}/
 )
 
+install(PROGRAMS
+  scripts/move_laser.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 
 ament_package()
