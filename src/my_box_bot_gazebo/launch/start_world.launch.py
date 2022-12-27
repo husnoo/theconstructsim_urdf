@@ -13,16 +13,21 @@ from ament_index_python.packages import get_package_prefix
 def generate_launch_description():
 
     pkg_gazebo_ros = get_package_share_directory("gazebo_ros")
+    print('>>> pkg_gazebo_ros:', pkg_gazebo_ros)
+    
     pkg_box_bot_gazebo = get_package_share_directory("my_box_bot_gazebo")
+    print('>>> pkg_box_bot_gazebo:', pkg_box_bot_gazebo)
 
     # We get the whole install dir
     # We do this to avoid having to copy or softlink manually the packages so that gazebo can find them
     description_package_name = "my_box_bot_description"
     install_dir = get_package_prefix(description_package_name)
+    print('>>> install_dir:', install_dir)
 
     # Set the path to the WORLD model files. Is to find the models inside the models folder in my_box_bot_gazebo package
     gazebo_models_path = os.path.join(pkg_box_bot_gazebo, "models")
     # os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
+    print('>>> gazebo_models_path:', gazebo_models_path)
 
     if "GAZEBO_MODEL_PATH" in os.environ:
         os.environ["GAZEBO_MODEL_PATH"] = (
